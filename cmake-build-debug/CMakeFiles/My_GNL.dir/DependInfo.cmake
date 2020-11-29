@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/gbrittan/CLionProjects/get_next_line/get_next_line.c" "/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line.c.o"
-  "/Users/gbrittan/CLionProjects/get_next_line/get_next_line_utils.c" "/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/get_next_line.dir/get_next_line_utils.c.o"
-  "/Users/gbrittan/CLionProjects/get_next_line/main.c" "/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/get_next_line.dir/main.c.o"
+  "/Users/gbrittan/CLionProjects/My_GNL/get_next_line.c" "/Users/gbrittan/CLionProjects/My_GNL/cmake-build-debug/CMakeFiles/My_GNL.dir/get_next_line.c.o"
+  "/Users/gbrittan/CLionProjects/My_GNL/get_next_line_utils.c" "/Users/gbrittan/CLionProjects/My_GNL/cmake-build-debug/CMakeFiles/My_GNL.dir/get_next_line_utils.c.o"
+  "/Users/gbrittan/CLionProjects/My_GNL/main.c" "/Users/gbrittan/CLionProjects/My_GNL/cmake-build-debug/CMakeFiles/My_GNL.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
-  "BUFFER_SIZE=10"
+  "BUFFER_SIZE=16"
   )
 
 # The include file search paths:
