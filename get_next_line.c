@@ -1,17 +1,17 @@
 #include "get_next_line.h"
 
-static char *search_and_write(const char *remains)
+static char		*srch_wr(char *remains)
 {
-	int i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
-	while(remains != NULL && remains[i] != '\n' && remains[i])
+	while (remains != NULL && remains[i] != '\n' && remains[i])
 		i++;
-	if(!(str = malloc(sizeof(char) * (i + 1))))
+	if (!(str = malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	i = 0;
-	while(remains != NULL && remains[i] != '\n' && remains[i])
+	while (remains != NULL && remains[i] != '\n' && remains[i])
 	{
 		str[i] = remains[i];
 		i++;
@@ -20,49 +20,61 @@ static char *search_and_write(const char *remains)
 	return (str);
 }
 
-static char *cut_remains(char *remains)
+static char		*cut_remains(char *remains)
 {
-	size_t i;
-	int j;
-	char *str;
+	size_t	i;
+	int		j;
+	char	*str;
 
 	i = 0;
 	j = 0;
-	if(remains == NULL)
-		return (NULL);
-	while(remains [i] != '\n' && remains[i])
+	while (remains[i] != '\n' && remains[i])
 		i++;
-	if(remains[i] == '\n')
+	if (remains[i] == '\n')
 		i++;
-	if (ft_strlen(remains) > i)
-		str = malloc(sizeof(char) * (ft_strlen(remains) - i + 1));
-	else
-		str = malloc(sizeof(char) * (i + 1));
-	if(str == NULL)
+	if (!(str = malloc(sizeof(char) * (ft_strlen(remains) - i + 1))))
 		return (NULL);
-	while(remains[i] != '\0')
+	while (remains[i] != '\0')
 		str[j++] = remains[i++];
 	str[j] = '\0';
 	free(remains);
 	return (str);
 }
 
-int get_next_line(int fd, char **line)
+int				free_if_error(char *remains, char *buf)
 {
-	char *buf;
-	static char *remains;
-	int read_b = 1;
-	if ((BUFFER_SIZE < 1) || !(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-		return (-1);
-	while (!(ft_strchr(remains, '\n')) && (read_b = read(fd, buf, BUFFER_SIZE)))
+	if (remains != NULL)
+		free(remains);
+	if (buf != NULL)
+		free(buf);
+	return (-1);
+}
+
+int				get_next_line(int fd, char **line)
+{
+	char		*buf;
+	static char	*rmns;
+	int			read_b;
+
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	read_b = 1;
+	if ((BUFFER_SIZE < 1) || !(buf) || !(line))
+		return (free_if_error(rmns, buf));
+	while (!(ft_strchr(rmns, '\n')) && (read_b = read(fd, buf, BUFFER_SIZE)))
 	{
+		if (read_b == -1)
+			return (free_if_error(rmns, buf));
 		buf[read_b] = '\0';
-		remains = ft_strjoin(remains, buf);
+		if ((rmns = ft_strjoin(rmns, buf)) == NULL)
+			return (free_if_error(rmns, buf));
 	}
 	free(buf);
-	*line = search_and_write(remains);
-	remains = cut_remains(remains);
-	if(read_b || ft_strlen(remains))
+	*line = srch_wr(rmns);
+	if (*line == NULL || (rmns && !(rmns = cut_remains(rmns))))
+		return (free_if_error(rmns, buf));
+	if (read_b || ft_strlen(rmns))
 		return (1);
+	free(rmns);
+	rmns = NULL;
 	return (0);
 }

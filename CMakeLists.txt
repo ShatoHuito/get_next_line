@@ -3,7 +3,7 @@ project(My_GNL C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_definitions(-DBUFFER_SIZE=16)
+add_definitions(-DBUFFER_SIZE=3)
 
 add_definitions(-Wall -Wextra -Werror)
 
