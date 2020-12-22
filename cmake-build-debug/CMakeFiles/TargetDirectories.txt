@@ -1,3 +1,0 @@
-/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/gbrittan/CLionProjects/get_next_line/cmake-build-debug/CMakeFiles/My_GNL.dir

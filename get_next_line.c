@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gbrittan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/12/06 16:43:23 by gbrittan          #+#    #+#             */
+/*   Updated: 2020/12/06 16:57:16 by gbrittan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 static char		*srch_wr(char *remains)
@@ -41,7 +53,7 @@ static char		*cut_remains(char *remains)
 	return (str);
 }
 
-int				free_if_error(char *remains, char *buf)
+static int		free_if_error(char *remains, char *buf)
 {
 	if (remains != NULL)
 		free(remains);
